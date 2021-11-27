@@ -29,7 +29,7 @@ router.post("/user/register", async (req,res)=>{
 
     }catch(error){
         console.log(error);
-        res.status(401).send(    {
+        res.status(200).send(    {
             data:{error:error.toString()},
             status:false,
             message:"Error" 
@@ -47,8 +47,9 @@ router.post("/user/login",async(req,res)=>{
             throw new Error("Existing user or incompleted params")
         })
         if (user==null){
-            res.status=false
+
             throw new Error("User not found")
+            
             
         }
         const match = await user.verifyPassword(request.password)
