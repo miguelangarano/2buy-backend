@@ -7,18 +7,22 @@ const userSchema = new mongoose.Schema({
         required:true,//obligatorio
         trim:true,//elimina espacios antes y despues
         unique:true,//no repetitivo
-        lowercase:true//solo minuscula
+        lowercase:true,//solo minuscula
+        maxlength:50,//máximo de caracteres
     },
     name:{
         type:String,
         required:true,//obligatorio
         trim:true,//elimina espacios antes y despues
+        minlength:4,//mínimo de caracteres
+        maxlength:10,//máximo de caracteres
+
     },    
     password:{
         type:String,
-        required:true,
-        minlength:8,
-        trim:true,
+        required:true,//obligatorio
+        minlength:8,//mínimo de caracteres
+        trim:true,//elimina espacios antes y después
         validate(){
             if(this.password=="12345678"){
                 throw new Error("La contraseña no puede ser 12345678")
